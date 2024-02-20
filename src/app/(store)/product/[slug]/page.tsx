@@ -1,3 +1,4 @@
+import { AddToCartButton } from '@/components/add-to-cart-button'
 import { api } from '@/data/api'
 import { Product } from '@/data/types/product'
 import { Metadata } from 'next'
@@ -69,6 +70,7 @@ export default async function Product({ params }: ProductParams) {
             })}
           </span>
           <span className="text-sm text-zinc-400">
+            Up to 12x{' '}
             {(product.price / 12).toLocaleString('pt-BR', {
               style: 'currency',
               currency: 'BRL',
@@ -106,12 +108,7 @@ export default async function Product({ params }: ProductParams) {
           </div>
         </div>
 
-        <button
-          type="button"
-          className="mt-8 flex h-12 items-center justify-center rounded-full bg-emerald-600 font-semibold text-white"
-        >
-          Add to cart
-        </button>
+        <AddToCartButton productId={product.id} />
       </div>
     </div>
   )
